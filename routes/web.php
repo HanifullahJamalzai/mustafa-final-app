@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\landing\landingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [landingController::class, 'index']);
 
 Route::group(['prefix' => 'admin'], function(){
-    Route::get('/',[DashboardController::class, 'index']);
-    Route::get('about',[AboutController::class, 'index']);
+    Route::get('/',[DashboardController::class, 'index'])->name('admin');
+    Route::resource('about', AboutController::class);
 });
 
 Route::get('/login',[LoginController::class, 'index']);
