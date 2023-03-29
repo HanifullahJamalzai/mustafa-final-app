@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -18,5 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin',[DashboardController::class, 'index']);
+
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('/',[DashboardController::class, 'index']);
+    Route::get('about',[AboutController::class, 'index']);
+});
+
 Route::get('/login',[LoginController::class, 'index']);
