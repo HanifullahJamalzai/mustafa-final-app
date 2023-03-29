@@ -17,11 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [landingController::class, 'index']);
-
+// Admin Section Routes
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/',[DashboardController::class, 'index'])->name('admin');
     Route::resource('about', AboutController::class);
 });
 
+
+// Auth Section Routes
 Route::get('/login',[LoginController::class, 'index']);
+
+
+// Landing Section Routes
+Route::get('/', [landingController::class, 'index']);
