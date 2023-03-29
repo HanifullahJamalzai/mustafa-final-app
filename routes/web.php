@@ -23,3 +23,7 @@ Route::get('/admin', function () {
 Route::get('user',function (){
     return view('todo');
 });
+
+Route::get('/login',function(){
+    return view('auth.login');
+});
