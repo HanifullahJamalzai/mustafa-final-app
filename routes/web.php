@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\landing\landingController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 // Auth Section Routes
 Route::get('/login',[LoginController::class, 'index']);
+Route::get('/register',[RegisterController::class, 'index']);
 
 
 // Landing Section Routes
