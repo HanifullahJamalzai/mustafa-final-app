@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AboutController;
+use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/',[DashboardController::class, 'index'])->name('admin');
     Route::resource('about', AboutController::class);
+    Route::resource('contact', ContactController::class);
 });
 
 
