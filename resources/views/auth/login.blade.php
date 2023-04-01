@@ -61,22 +61,29 @@
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  <form action="{{ route('login.user') }}" method="post">
+                    @csrf
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="yourUsername" class="form-label">Email</label>
                       <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your username.</div>
+                        <input type="email" name="email" class="form-control" id="yourUsername" value="{{ old('email') }}" >
                       </div>
+                      @error('email')
+                        <div class="alert alert-danger">
+                          {{ $message }}
+                        </div>
+                      @enderror
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      <input type="password" name="password" class="form-control" id="yourPassword" value="{{ old('password') }}">
                     </div>
+                      @error('password')
+                        <div class="alert alert-danger">
+                          {{ $message }}
+                        </div>
+                      @enderror
 
                     <div class="col-12">
                       <div class="form-check">

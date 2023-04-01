@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Admin Section Routes
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/',[DashboardController::class, 'index'])->name('admin');
     Route::resource('about', AboutController::class);
     Route::resource('contact', ContactController::class);
@@ -28,7 +28,8 @@ Route::group(['prefix' => 'admin'], function(){
 
 
 // Auth Section Routes
-Route::get('/login',[LoginController::class, 'index']);
+Route::get('/login',[LoginController::class, 'index'])->name('login');
+Route::post('/login/user',[LoginController::class, 'login'])->name('login.user');
 Route::get('/register',[RegisterController::class, 'index']);
 Route::post('/register/user', [RegisterController::class, 'register'])->name('register.user');
 
