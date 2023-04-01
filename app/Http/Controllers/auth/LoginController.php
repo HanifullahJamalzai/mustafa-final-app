@@ -22,7 +22,7 @@ class LoginController extends Controller
             return back();
         }else{
             auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->remember);
-            redirect('admin');
+        return  redirect('admin');
         }
     }
 }
