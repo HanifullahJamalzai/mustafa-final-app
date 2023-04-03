@@ -54,9 +54,10 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="about.php">About</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.php">contact</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -140,7 +141,7 @@
   <main id="main">
 
     @yield('contents')
-    
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
