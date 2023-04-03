@@ -15,6 +15,7 @@
 
   <div class="row mb-2">
     <div class="col-md-12">
+        <p style="color: red">Show Error Messagges HomeWork </p>
 
         <form action="{{ route('featured.store') }}" method="POST">
             @csrf
@@ -57,27 +58,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Brandon Jacob</td>
-            <td>Designer</td>
-            <td>28</td>
-            <td>2016-05-25</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Bridie Kessler</td>
-            <td>Developer</td>
-            <td>35</td>
-            <td>2014-12-05</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Ashleigh Langosh</td>
-            <td>Finance</td>
-            <td>45</td>
-            <td>2011-08-12</td>
-          </tr>
+
+            @foreach ($featured as $key=>$item)
+                <tr>
+                    <th scope="row">{{ $key+1 }}</th>
+                    <td>{{ $item->icon }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->description }}</td>
+                    <td class="d-flex">
+                        <form action="{{ route('featured.destroy', ['featured' => $item->id]) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger">DELETE</button> 
+                        </form>
+
+                        <button class="btn btn-primary">EDIT</button>
+                    </td>
+                </tr>
+            @endforeach
           
         </tbody>
       </table>

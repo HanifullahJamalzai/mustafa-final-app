@@ -14,7 +14,8 @@ class FeaturedController extends Controller
      */
     public function index()
     {
-        return view('admin.featured.index');
+        $featured = Featured::all();
+        return view('admin.featured.index', compact('featured'));
     }
 
     /**
@@ -63,6 +64,7 @@ class FeaturedController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Featured::find($id)->delete();
+        return back();
     }
 }
