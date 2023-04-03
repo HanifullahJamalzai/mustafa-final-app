@@ -16,6 +16,13 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('featured.index') }}">
+          <i class="bi bi-grid"></i>
+          <span>Featured</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
       
     </ul>
 
