@@ -18,15 +18,15 @@
 
         <form action="{{ route('featured.store') }}" method="POST">
             @csrf
-            
+
             <div class="row">
                 <div class="d-flex mb-1" style="justify-content: space-between">
                     <div class="form-floating col-md-5">
-                        <input type="password" name="icon" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input type="text" name="icon" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">ICON</label>
                     </div>
                     <div class="form-floating col-md-6">
-                        <input type="password" name="title" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input type="text" name="title" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">TITLE</label>
                     </div>
                 </div>

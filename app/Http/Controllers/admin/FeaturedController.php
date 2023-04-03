@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FeaturedStoreValidation;
+use App\Models\Featured;
 use Illuminate\Http\Request;
 
 class FeaturedController extends Controller
@@ -26,9 +28,10 @@ class FeaturedController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FeaturedStoreValidation $request)
     {
-        //
+        Featured::create($request->all());
+        return back();
     }
 
     /**
