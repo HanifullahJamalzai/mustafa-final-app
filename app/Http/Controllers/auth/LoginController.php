@@ -17,7 +17,6 @@ class LoginController extends Controller
             'email' => 'required|email|min:10|max:255',
             'password' => 'required'
         ]);
-
         if(!auth()->attempt(['email' => $request->email, 'password' => $request->password])){
             // show error
             return back();
