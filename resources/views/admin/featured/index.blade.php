@@ -4,18 +4,18 @@
 
 
 <div class="pagetitle">
-    <h1>Featured Page</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">admin</a></li>
-        <li class="breadcrumb-item active">Featured</li>
-      </ol>
-    </nav>
-  </div>
+  <h1>Featured Page</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">admin</a></li>
+      <li class="breadcrumb-item active">Featured</li>
+    </ol>
+  </nav>
+</div>
+@include('common.alert')
 
-  <div class="row mb-2">
-    <div class="col-md-12">
-        <p style="color: red">Show Error Messagges HomeWork </p>
+<div class="row mb-2">
+  <div class="col-md-12">
 
         <form action="{{ route('featured.store') }}" method="POST">
             @csrf

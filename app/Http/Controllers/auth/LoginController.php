@@ -18,12 +18,13 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
         if(!auth()->attempt(['email' => $request->email, 'password' => $request->password])){
-            // show error
+            session()->flash('error', 'Email or Password donot match!');
             return back();
         }
-
+        
         else{
             auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->remember);
+            session()->flash('success', 'Welcome to Dashboard!');
         return  redirect('admin');
         }
     }

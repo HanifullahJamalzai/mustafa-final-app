@@ -32,6 +32,7 @@ class FeaturedController extends Controller
     public function store(FeaturedStoreValidation $request)
     {
         Featured::create($request->all());
+        session()->flash('success', 'Record has been saved successfully!');
         return back();
     }
 
