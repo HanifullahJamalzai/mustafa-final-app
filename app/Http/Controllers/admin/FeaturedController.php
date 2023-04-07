@@ -14,8 +14,8 @@ class FeaturedController extends Controller
      */
     public function index()
     {
-        $featured = Featured::all();
-        return view('admin.featured.index', compact('featured'));
+        $featureds = Featured::all();
+        return view('admin.featured.index', compact('featureds'));
     }
 
     /**
@@ -32,6 +32,7 @@ class FeaturedController extends Controller
     public function store(FeaturedStoreValidation $request)
     {
         Featured::create($request->all());
+        session()->flash('success', 'Record has been saved successfully!');
         return back();
     }
 
@@ -46,17 +47,27 @@ class FeaturedController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Featured $featured)
     {
-        //
+        $featureds = Featured::all();
+        return view('admin.featured.index', compact('featured', 'featureds'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Featured $featured)
     {
-        //
+        //dd($request->all(), $featured);
+        $featured->update([
+            'icon' => $request->icon,
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+        session()->flash('success', 'Record has been Updated successfully!');
+        //return redirect('/admin/featured');
+        return redirect()->route('featured.index');
+        
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
-
 @section('contents')
+@include('common.alert')
 <div class="pagetitle">
     <h1>Blank Page</h1>
     <nav>
