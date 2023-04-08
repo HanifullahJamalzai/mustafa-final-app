@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Testimonial;
+use DateTimeZone;
 use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
@@ -12,7 +14,8 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        return view('admin.testimonial.index');
+        $testimonials = Testimonial::all(); 
+        return view('admin.testimonial.index', compact('testimonials'));
     }
 
     /**
@@ -20,7 +23,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.testimonial.form");
     }
 
     /**
@@ -28,7 +31,22 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validation HomeWork
+        //dd($request->all());
+        
+        $testimonial = new Testimonial();
+        $testimonial['name'] = $request->name;
+        $testimonial['designation'] = $request->designation;
+        $testimonial['description'] = $request->description;
+        if($request->photo){
+            date_default_timezone_set("Asia/Kabul"); 
+            $fileName = 'testimonial_'.date('Ymd-His').'_'.rand(10,100000).'.'.$request->photo->extension();
+            $request->photo->storeAs('public/testimonial', $fileName);
+            $testimonial['photo'] = "/storage/testimonial/$fileName";
+        }        
+        $testimonial->save();
+        //Alert HomeWork
+        return redirect('admin/testimonial');
     }
 
     /**
@@ -58,8 +76,10 @@ class TestimonialController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Testimonial $testimonial)
     {
-        //
+        @unlink(public_path().'/'.$testimonial->photo);
+        $testimonial->delete();
+        return back();
     }
 }
