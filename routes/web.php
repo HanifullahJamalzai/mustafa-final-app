@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\FeaturedController;
+use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\LogoutController;
 use App\Http\Controllers\auth\RegisterController;
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::resource('about', AboutController::class);
     Route::resource('contact', ContactController::class);
     Route::resource('featured', FeaturedController::class);
+    Route::resource('testimonial', TestimonialController::class);
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
