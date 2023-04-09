@@ -72,14 +72,14 @@
                         <form action="{{ route('featured.destroy', ['featured' => $item->id]) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger">DELETE</button> 
+                            <button class="btn btn-danger">DELETE</button>
                         </form>
 
                         <a class="btn btn-primary" href={{ route('featured.edit', ['featured'=>$item->id]) }}>EDIT</a>
                     </td>
                 </tr>
             @endforeach
-          
+
         </tbody>
       </table>
       <!-- End Table with hoverable rows -->
