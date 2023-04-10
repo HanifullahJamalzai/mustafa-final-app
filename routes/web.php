@@ -44,9 +44,19 @@ Route::group(['middleware' => 'guest'], function(){
 });
 
 // Landing Section Routes
-Route::get('/', [landingController::class, 'index']);
-Route::get('/home', [landingController::class, 'home'])->name('home');
-Route::get('/about', [landingController::class, 'about'])->name('about');
-Route::get('/services', [landingController::class, 'services'])->name('services');
-Route::get('/pricing', [landingController::class, 'pricing'])->name('pricing');
-Route::get('/contact', [landingController::class, 'contact'])->name('contact');
+Route::group(['middleware' => 'languageSwitcher'], function(){
+    Route::get('/', [landingController::class, 'index']);
+    Route::get('/home', [landingController::class, 'home'])->name('home');
+    Route::get('/about', [landingController::class, 'about'])->name('about');
+    Route::get('/services', [landingController::class, 'services'])->name('services');
+    Route::get('/pricing', [landingController::class, 'pricing'])->name('pricing');
+    Route::get('/contact', [landingController::class, 'contact'])->name('contact');
+    Route::get('/language/{lang}', function($lang){
+       session(['lang' => $lang]);
+       app()->setLocale(session()->get('lang'));
+        //dd(app()->getLocale());
+    
+       // dd($lang);
+       return back();
+    })->name('language');
+});
