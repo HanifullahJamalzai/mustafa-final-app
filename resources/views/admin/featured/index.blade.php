@@ -28,10 +28,20 @@
                     <div class="form-floating col-md-5">
                         <input type="text" name="icon" class="form-control" id="floatingPassword" placeholder="Password" value="{{ isset($featured) ? $featured->icon : null }}">
                         <label for="floatingPassword">ICON</label>
+                        <div class="alert alert-danger">
+                          @error('icon')
+                            {{$message}}
+                          @enderror
+                        </div>
                     </div>
                     <div class="form-floating col-md-6">
                         <input type="text" name="title" class="form-control" id="floatingPassword" placeholder="Password" value="{{ isset($featured) ? $featured->title : null }}">
                         <label for="floatingPassword">TITLE</label>
+                        <div class="alert alert-danger">
+                          @error('tittle')
+                            {{$message}}
+                          @enderror
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,6 +49,11 @@
             <div class="form-floating mb-1">
                 <textarea class="form-control" name="description" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px;">{{ isset($featured) ? $featured->description : null }}</textarea>
                 <label for="floatingTextarea">DESCRIPTION</label>
+                <div class="alert alert-danger">
+                  @error('description')
+                    {{$message}}
+                  @enderror
+                </div>
             </div>
             <button class="btn {{ isset($featured) ? "btn-success": "btn-primary" }}   w-100">{{ isset($featured) ? "UPDATE": "STORE" }}</button>
         </form>
@@ -72,14 +87,14 @@
                         <form action="{{ route('featured.destroy', ['featured' => $item->id]) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger">DELETE</button> 
+                            <button class="btn btn-danger">DELETE</button>
                         </form>
 
                         <a class="btn btn-primary" href={{ route('featured.edit', ['featured'=>$item->id]) }}>EDIT</a>
                     </td>
                 </tr>
             @endforeach
-          
+
         </tbody>
       </table>
       <!-- End Table with hoverable rows -->
