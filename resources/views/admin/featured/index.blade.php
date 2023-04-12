@@ -90,7 +90,7 @@
                             <button class="btn btn-danger">DELETE</button>
                         </form>
 
-                        <a class="btn btn-primary" href={{ route('featured.edit', ['featured'=>$item->id]) }}>EDIT</a>
+                        <a class="btn btn-primary" href={{ route('featured.WithEdit', ['featured'=>$item->id, 'slug' => Str::slug($item->title)]) }}>EDIT</a>
                     </td>
                 </tr>
             @endforeach

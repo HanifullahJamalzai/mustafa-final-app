@@ -47,8 +47,9 @@ class FeaturedController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Featured $featured)
+    public function edit(Featured $featured, $slug)
     {
+        //dd($slug);
         $featureds = Featured::all();
         return view('admin.featured.index', compact('featured', 'featureds'));
     }

@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/',[DashboardController::class, 'index'])->name('admin');
     Route::resource('about', AboutController::class);
     Route::resource('contact', ContactController::class);
+    Route::get('featured/{featured}/{slug}', [FeaturedController::class, 'edit'])->name('featured.WithEdit');   
     Route::resource('featured', FeaturedController::class);
     Route::resource('testimonial', TestimonialController::class);
 
