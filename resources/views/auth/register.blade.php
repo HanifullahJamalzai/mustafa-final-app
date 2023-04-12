@@ -74,6 +74,7 @@
                         </div>
                       @enderror
                     </div>
+
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Email</label>
                       <div class="input-group has-validation">
@@ -98,7 +99,7 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password Confirmation</label>
-                      <input type="password" name="password_confirmation" class="form-control" id="yourPassword">
+                      <input type="password" name="password_Confirmation" class="form-control" id="yourPassword">
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
