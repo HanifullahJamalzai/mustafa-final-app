@@ -36,7 +36,7 @@
             
             <div class="col-md-12">
                 <label for="inputEmail5" class="form-label">Description</label>
-                <textarea name="description" class="form-control" id="inputEmail5"></textarea>
+                <textarea name="description" class="tinymce-editor" id="inputEmail5"></textarea>
             </div>
             
             <div class="text-center">

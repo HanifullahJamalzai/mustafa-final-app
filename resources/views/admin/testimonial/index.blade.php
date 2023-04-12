@@ -42,7 +42,7 @@
                     </th>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->designation }}</td>
-                    <td>{{ $item->description }}</td>
+                    <td>{!! $item->description !!}</td>
                     <td class="d-flex">
                         <form action="{{ route('testimonial.destroy', ['testimonial'=> $item->id]) }}" method="POST">
                             @csrf
