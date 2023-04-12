@@ -55,6 +55,7 @@
 
         </tbody>
       </table>
+      {{ $testimonials->links() }}
       <!-- End Table with hoverable rows -->
 
     </div>
