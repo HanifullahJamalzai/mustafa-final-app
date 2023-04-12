@@ -10,6 +10,7 @@ class landingController extends Controller
 {
     public function index(){
         $featured = Featured::all();
+        //$featured = Featured::with('posts', 'comments');
         return view('landing.index',compact('featured'));
     }
     public function home(){
